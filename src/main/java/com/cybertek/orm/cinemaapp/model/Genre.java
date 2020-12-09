@@ -14,7 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "genre")
-public class Genre extends Model<Integer>{
+public class Genre extends Model<Integer> {
 
     private String name;
 

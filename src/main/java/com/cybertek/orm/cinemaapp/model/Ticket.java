@@ -7,10 +7,10 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="ticket")
+@Table(name = "ticket")
 @Getter
 @Setter
-public class Ticket extends Model<Integer>{
+public class Ticket extends Model<Integer> {
 
     @Column(name = "seat_number")
     private Integer seatNumber;

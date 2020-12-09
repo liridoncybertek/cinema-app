@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @Table(name = "location")
 @Getter
 @Setter
-public class Location extends Model<Integer>{
+public class Location extends Model<Integer> {
 
     @NotNull
     private String name;

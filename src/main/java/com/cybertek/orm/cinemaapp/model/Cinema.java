@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "cinema")
 @Getter
 @Setter
-public class Cinema extends Model<Integer>{
+public class Cinema extends Model<Integer> {
 
     private String name;
 

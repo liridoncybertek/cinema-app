@@ -10,7 +10,7 @@ import java.util.Date;
 @Table(name = "movie_cinema")
 @Getter
 @Setter
-public class MovieCinema extends Model<Integer>{
+public class MovieCinema extends Model<Integer> {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id", nullable = false)
