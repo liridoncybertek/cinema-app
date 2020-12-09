@@ -1,8 +1,11 @@
 package com.cybertek.orm.cinemaapp.model;
 
 import com.cybertek.orm.cinemaapp.model.enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -13,6 +16,8 @@ import javax.validation.constraints.Size;
 @Table(name = "user_account")
 @Getter
 @Setter
+@ToString
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User extends Model<Integer> {
 
     @Email
@@ -28,5 +33,6 @@ public class User extends Model<Integer> {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_details_id", referencedColumnName = "id")
+    @JsonIgnore
     private AccountDetails accountDetails;
 }

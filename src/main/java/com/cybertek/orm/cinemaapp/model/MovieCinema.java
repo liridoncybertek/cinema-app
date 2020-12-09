@@ -1,5 +1,6 @@
 package com.cybertek.orm.cinemaapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +11,8 @@ import java.util.Date;
 @Table(name = "movie_cinema")
 @Getter
 @Setter
-public class MovieCinema extends Model<Integer> {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class MovieCinema extends Model<Integer>{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id", nullable = false)

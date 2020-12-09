@@ -2,6 +2,7 @@ package com.cybertek.orm.cinemaapp.model;
 
 import com.cybertek.orm.cinemaapp.model.enums.MovieState;
 import com.cybertek.orm.cinemaapp.model.enums.MovieType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @Table(name = "movie")
 @Getter
 @Setter
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Movie extends Model<Integer> {
 
     private String name;
@@ -37,7 +39,7 @@ public class Movie extends Model<Integer> {
     @Enumerated(EnumType.STRING)
     private MovieState state;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "movie_genre_rel",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))

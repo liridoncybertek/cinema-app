@@ -1,5 +1,6 @@
 package com.cybertek.orm.cinemaapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,5 +20,6 @@ public class Genre extends Model<Integer> {
     private String name;
 
     @ManyToMany(mappedBy = "genreList", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Movie> movies;
 }

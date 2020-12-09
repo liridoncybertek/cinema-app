@@ -3,6 +3,7 @@ package com.cybertek.orm.cinemaapp.model;
 import com.cybertek.orm.cinemaapp.model.enums.UserRole;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -21,6 +22,8 @@ public class AccountDetails extends Model<Integer> {
     private String state;
 
     private String city;
+
+    private Integer age;
 
     @Column(name = "postal_code")
     private String postalCode;
