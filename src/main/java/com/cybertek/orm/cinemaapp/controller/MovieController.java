@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -40,7 +42,8 @@ public class MovieController {
 
     @GetMapping("/release-date/{date}")
     public List<Movie> readAllByReleaseDateAfter(@PathVariable String date) throws ParseException {
-        Date parseDateFromString = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime parseDateFromString  = LocalDateTime.parse(date, formatter);
         return movieRepository.findAllByReleaseDateAfter(parseDateFromString);
     }
 

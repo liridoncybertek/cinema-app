@@ -1,9 +1,7 @@
 package com.cybertek.orm.cinemaapp.model;
 
 import com.cybertek.orm.cinemaapp.model.enums.UserRole;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,6 +9,7 @@ import javax.persistence.*;
 @Table(name = "account_details")
 @Getter
 @Setter
+@NoArgsConstructor
 public class AccountDetails extends Model<Integer> {
 
     private String name;
@@ -34,4 +33,14 @@ public class AccountDetails extends Model<Integer> {
     @OneToOne(mappedBy = "accountDetails")
     private User user;
 
+    public AccountDetails(String name, String address, String country, String state, String city, Integer age, String postalCode, UserRole role) {
+        this.name = name;
+        this.address = address;
+        this.country = country;
+        this.state = state;
+        this.city = city;
+        this.age = age;
+        this.postalCode = postalCode;
+        this.role = role;
+    }
 }

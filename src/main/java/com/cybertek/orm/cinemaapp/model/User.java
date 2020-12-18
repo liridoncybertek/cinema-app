@@ -4,6 +4,7 @@ import com.cybertek.orm.cinemaapp.model.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -18,6 +19,7 @@ import javax.validation.constraints.Size;
 @Setter
 @ToString
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@NoArgsConstructor
 public class User extends Model<Integer> {
 
     @Email
@@ -31,8 +33,14 @@ public class User extends Model<Integer> {
     @NotNull
     private String username;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "account_details_id", referencedColumnName = "id")
     @JsonIgnore
     private AccountDetails accountDetails;
+
+    public User(String email, String password,String username) {
+        this.email = email;
+        this.password = password;
+        this.username = username;
+    }
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +22,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
     List<Movie> findAllByDurationIn(List<Integer> durations);
 
-    List<Movie> findAllByReleaseDateAfter(Date releaseDate);
+    List<Movie> findAllByReleaseDateAfter(LocalDateTime releaseDate);
 
     List<Movie> findAllByStateAndType(MovieState movieState, MovieType movieType);
 }

@@ -1,7 +1,9 @@
 package com.cybertek.orm.cinemaapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -15,6 +17,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "genre")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Genre extends Model<Integer> {
 
     private String name;
@@ -22,4 +26,8 @@ public class Genre extends Model<Integer> {
     @ManyToMany(mappedBy = "genreList", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Movie> movies;
+
+    public Genre(String name) {
+        this.name = name;
+    }
 }

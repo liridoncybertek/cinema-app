@@ -34,4 +34,13 @@ public class Location extends Model<Integer>{
     private String city;
 
     private String state;
+
+    public Location(@NotNull String name, String address, Integer postalCode, String country, String city, String state) {
+        this.name = name;
+        this.address = address;
+        this.postalCode = postalCode;
+        this.country = country;
+        this.city = city;
+        this.state = state;
+    }
 }
