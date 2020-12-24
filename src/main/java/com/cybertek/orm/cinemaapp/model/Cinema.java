@@ -9,10 +9,8 @@ import javax.persistence.*;
 @Table(name = "cinema")
 @Getter
 @Setter
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Cinema extends Model<Integer>{
 
     private String name;
@@ -27,5 +25,13 @@ public class Cinema extends Model<Integer>{
     public Cinema(String name, String sponsoredName) {
         this.name = name;
         this.sponsoredName = sponsoredName;
+    }
+
+    @Override
+    public String toString() {
+        return "Cinema{" +
+                "name='" + name + '\'' +
+                ", sponsoredName='" + sponsoredName + '\'' +
+                '}';
     }
 }

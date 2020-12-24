@@ -20,9 +20,7 @@ import java.util.List;
 @Table(name = "movie")
 @Getter
 @Setter
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @NoArgsConstructor
-@ToString
 public class Movie extends Model<Integer> {
 
     private String name;
@@ -57,5 +55,18 @@ public class Movie extends Model<Integer> {
         this.duration = duration;
         this.type = type;
         this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", releaseDate=" + releaseDate +
+                ", duration=" + duration +
+                ", summary='" + summary + '\'' +
+                ", type=" + type +
+                ", state=" + state +
+                '}';
     }
 }

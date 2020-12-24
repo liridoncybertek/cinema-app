@@ -12,9 +12,7 @@ import java.util.Date;
 @Table(name = "movie_cinema")
 @Getter
 @Setter
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @NoArgsConstructor
-@ToString
 public class MovieCinema extends Model<Integer>{
 
     @ManyToOne(fetch = FetchType.LAZY)

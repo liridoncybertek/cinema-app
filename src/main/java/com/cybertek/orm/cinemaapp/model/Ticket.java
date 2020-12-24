@@ -23,7 +23,7 @@ public class Ticket extends Model<Integer> {
     @Column(name = "row_number")
     private Integer rowNumber;
 
-    @Column(name = "date_time", columnDefinition = "TIMESTAMP")
+    @Column(name = "date_time")
     private LocalDateTime dateTime;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -6,7 +6,6 @@ import com.cybertek.orm.cinemaapp.model.enums.MovieType;
 import com.cybertek.orm.cinemaapp.model.enums.UserRole;
 import com.cybertek.orm.cinemaapp.repository.*;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
-@Component
+//@Component
 public class DataGenerator implements CommandLineRunner {
 
     private final MovieRepository movieRepository;
@@ -114,18 +113,18 @@ public class DataGenerator implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        createUsers();
-        createCinemasAndLocations();
-        createMoviesAndGenres();
-        scheduleMovies();
-        bookAMovie();
+//        createUsers();
+//        createCinemasAndLocations();
+//        createMoviesAndGenres();
+//        scheduleMovies();
+//        bookAMovie();
     }
 
     /**
      * Create users.
      */
     private void createUsers() {
-        AccountDetails a1 = new AccountDetails("Josie D Story", "262  Lochmere Lane", "United States", "Kentucky", "LOUISVILLE", 35, "40289", UserRole.USER);
+        AccountDetails a1 = new AccountDetails("Josie D Story", "262  Lochmere Lane", "Europe", "Kentucky", "LOUISVILLE", 35, "40289", UserRole.USER);
         AccountDetails a2 = new AccountDetails("Bernard P Fendley", "2903  Jarvis Street", "United States", "New York", "Buffalo", 28, "14211", UserRole.USER);
         AccountDetails a3 = new AccountDetails("Faith R Parsons", "4161  Alfred Drive", "United States", "New York", "Brooklyn", 47, "11226", UserRole.USER);
         AccountDetails a4 = new AccountDetails("Johnnie J Cannon", "2587  Logan Lane", "United States", "New York", "HOLTSVILLE", 47, "00544", UserRole.USER);

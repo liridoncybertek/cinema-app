@@ -1,7 +1,9 @@
 package com.cybertek.orm.cinemaapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -14,7 +16,8 @@ import java.math.BigDecimal;
 @Table(name = "location")
 @Getter
 @Setter
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@AllArgsConstructor
+@NoArgsConstructor
 public class Location extends Model<Integer>{
 
     @NotNull
@@ -35,7 +38,7 @@ public class Location extends Model<Integer>{
 
     private String state;
 
-    public Location(@NotNull String name, String address, Integer postalCode, String country, String city, String state) {
+    public Location(String name, String address, Integer postalCode, String country, String city, String state) {
         this.name = name;
         this.address = address;
         this.postalCode = postalCode;

@@ -17,9 +17,8 @@ import javax.validation.constraints.Size;
 @Table(name = "user_account")
 @Getter
 @Setter
-@ToString
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @NoArgsConstructor
+//@ToString
 public class User extends Model<Integer> {
 
     @Email
@@ -42,5 +41,14 @@ public class User extends Model<Integer> {
         this.email = email;
         this.password = password;
         this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                '}';
     }
 }

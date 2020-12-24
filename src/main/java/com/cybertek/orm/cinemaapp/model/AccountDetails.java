@@ -43,4 +43,18 @@ public class AccountDetails extends Model<Integer> {
         this.postalCode = postalCode;
         this.role = role;
     }
+
+    @Override
+    public String toString() {
+        return "AccountDetails{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", country='" + country + '\'' +
+                ", state='" + state + '\'' +
+                ", city='" + city + '\'' +
+                ", age=" + age +
+                ", postalCode='" + postalCode + '\'' +
+                ", role=" + role +
+                '}';
+    }
 }
