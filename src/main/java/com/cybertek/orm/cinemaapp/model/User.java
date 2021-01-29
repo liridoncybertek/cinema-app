@@ -3,6 +3,8 @@ package com.cybertek.orm.cinemaapp.model;
 import com.cybertek.orm.cinemaapp.model.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +20,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @NoArgsConstructor
-//@ToString
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer"}, ignoreUnknown = true)
 public class User extends Model<Integer> {
 
     @Email
@@ -27,14 +29,15 @@ public class User extends Model<Integer> {
 
     @NotNull
     @Size(min = 6, message = "Password should not be less than 6")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @NotNull
     private String username;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_details_id", referencedColumnName = "id")
-    @JsonIgnore
+    @JsonManagedReference
     private AccountDetails accountDetails;
 
     public User(String email, String password,String username) {
@@ -43,12 +46,4 @@ public class User extends Model<Integer> {
         this.username = username;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", username='" + username + '\'' +
-                '}';
-    }
 }

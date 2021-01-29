@@ -1,6 +1,8 @@
 package com.cybertek.orm.cinemaapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,6 +13,8 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+    @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+    @JsonIgnoreProperties(value = {"hibernate_lazy_initializer"}, ignoreUnknown = true)
 public class Cinema extends Model<Integer>{
 
     private String name;
@@ -27,11 +31,4 @@ public class Cinema extends Model<Integer>{
         this.sponsoredName = sponsoredName;
     }
 
-    @Override
-    public String toString() {
-        return "Cinema{" +
-                "name='" + name + '\'' +
-                ", sponsoredName='" + sponsoredName + '\'' +
-                '}';
-    }
 }

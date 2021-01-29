@@ -20,11 +20,12 @@ import java.util.Set;
 @Table(name = "genre")
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Genre extends Model<Integer> {
 
     private String name;
 
-    @ManyToMany(mappedBy = "genreList", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "genreList")
     @JsonIgnore
     private List<Movie> movies;
 

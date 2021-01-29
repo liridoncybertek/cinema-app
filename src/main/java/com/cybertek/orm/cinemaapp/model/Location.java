@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer"}, ignoreUnknown = true)
 public class Location extends Model<Integer>{
 
     @NotNull

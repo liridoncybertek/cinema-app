@@ -1,5 +1,6 @@
 package com.cybertek.orm.cinemaapp.model;
 
+import com.cybertek.orm.cinemaapp.annotations.CinemaSerializerAnn;
 import com.cybertek.orm.cinemaapp.model.enums.MovieState;
 import com.cybertek.orm.cinemaapp.model.enums.MovieType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -21,6 +22,9 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+//@CinemaSerializerAnn(fields = {"name", "price"})
+//@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer"}, ignoreUnknown = true)
 public class Movie extends Model<Integer> {
 
     private String name;
@@ -42,7 +46,7 @@ public class Movie extends Model<Integer> {
     @Enumerated(EnumType.STRING)
     private MovieState state;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(name = "movie_genre_rel",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
@@ -57,16 +61,4 @@ public class Movie extends Model<Integer> {
         this.state = state;
     }
 
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                ", releaseDate=" + releaseDate +
-                ", duration=" + duration +
-                ", summary='" + summary + '\'' +
-                ", type=" + type +
-                ", state=" + state +
-                '}';
-    }
 }

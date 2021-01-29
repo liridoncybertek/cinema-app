@@ -1,20 +1,22 @@
 package com.cybertek.orm.cinemaapp.model;
 
+import com.cybertek.orm.cinemaapp.serializer.CinemaSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "movie_cinema")
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer"}, ignoreUnknown = true)
 public class MovieCinema extends Model<Integer>{
 
+//    @JsonSerialize(using = CinemaSerializer.class)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id", nullable = false)
     private Movie movie;
